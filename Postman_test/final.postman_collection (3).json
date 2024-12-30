@@ -1,0 +1,986 @@
+{
+	"info": {
+		"_postman_id": "f082b1dd-a107-48f4-9df2-e0966d67cafe",
+		"name": "final",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38577996"
+	},
+	"item": [
+		{
+			"name": "Register Test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();",
+							"pm.test(\"Register test\", function () {",
+							"    ",
+							"    pm.expect(response.email).to.eql(pm.collectionVariables.get(\"{{$randomEmail}}\"));",
+							"",
+							"",
+							"});",
+							"",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    ",
+							"    pm.expect(response.status).to.eql(201);",
+							"    ",
+							"    ",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let email = pm.collectionVariables.replaceIn('{{$randomEmail}}')",
+							"pm.collectionVariables.set(\"email\", email)",
+							"",
+							"",
+							"",
+							"let name = pm.collectionVariables.replaceIn('{{$randomFirstName}}')",
+							"pm.collectionVariables.set(\"name\", name);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9,hy;q=0.8,ru;q=0.7"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "_ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730062821:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730062821:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730062821:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=8aLoQUk3S641vHGZACH7; FCNEC=%5B%5B%22AKsRol_N-BMTUHIkTthMGvWQ5oP49jeR3RjkSI7uoncW_TTmK15ZbqNbIlZn5-CyBxgK1rhjSghfuTkJNaH8IYMd4X0N2ha6UKGqsveE4TudLzeS9bdepJa01Oype1XTxLgpO5pCoSzhIEONpxOMnGB3336Ecr-1YA%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730062820.16.1.1730062948.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://practice.expandtesting.com"
+					},
+					{
+						"key": "priority",
+						"value": "u=1, i"
+					},
+					{
+						"key": "referer",
+						"value": "https://practice.expandtesting.com/notes/app/register"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"{{name}}\",\"email\":\"{{email}}\",\"password\":\"{{pas}}\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{dom}}/users/register",
+					"host": [
+						"{{dom}}"
+					],
+					"path": [
+						"users",
+						"register"
+					]
+				},
+				"description": "Generated from cURL: curl '[https://practice.expandtesting.com/notes/api/users/register'](https://practice.expandtesting.com/notes/api/users/register')  \n\\-H 'accept: application/json, text/plain, _/_'  \n\\-H 'accept-language: en-US,en;q=0.9,hy;q=0.8,ru;q=0.7'  \n\\-H 'content-type: application/json'  \n\\-H 'cookie: _ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730062821:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730062821:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730062821:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=8aLoQUk3S641vHGZACH7; FCNEC=\\[\\[\"AKsRol_N-BMTUHIkTthMGvWQ5oP49jeR3RjkSI7uoncW_TTmK15ZbqNbIlZn5-CyBxgK1rhjSghfuTkJNaH8IYMd4X0N2ha6UKGqsveE4TudLzeS9bdepJa01Oype1XTxLgpO5pCoSzhIEONpxOMnGB3336Ecr-1YA==\"\\]\\]; _ga_90GRT6N40B=GS1.1.1730062820.16.1.1730062948.0.0.0'  \n\\-H 'origin: [https://practice.expandtesting.com'](https://practice.expandtesting.com')  \n\\-H 'priority: u=1, i'  \n\\-H 'referer: [https://practice.expandtesting.com/notes/app/register'](https://practice.expandtesting.com/notes/app/register')  \n\\-H 'sec-ch-ua: \"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"'  \n\\-H 'sec-ch-ua-mobile: ?0'  \n\\-H 'sec-ch-ua-platform: \"macOS\"'  \n\\-H 'sec-fetch-dest: empty'  \n\\-H 'sec-fetch-mode: cors'  \n\\-H 'sec-fetch-site: same-origin'  \n\\-H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36'  \n\\--data-raw '{\"name\":\"Gurgen\",\"email\":\"[ddd@yandex.ru](https://mailto:ddd@yandex.ru)\",\"password\":\"111ddd\"}'"
+			},
+			"response": []
+		},
+		{
+			"name": "login test",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();",
+							"let email = response.data.email",
+							"let request = JSON.parse(pm.request.body)",
+							"pm.collectionVariables.set (\"email\" , email)",
+							"pm.test(\"Test Parse\", function () {pm.expect (response.data.email).to.eql(pm.collectionVariables.get(\"email\"));",
+							"",
+							"});",
+							"let  token = response.data.token",
+							"pm.collectionVariables.set(\"token\" , token)",
+							"",
+							"pm.collectionVariables.set (\"token\" , token)",
+							"pm.test(\"Test Parse\", function () {pm.expect (response.data.token).to.eql(pm.collectionVariables.get(\"token\"));",
+							"",
+							"});",
+							"",
+							"pm.environment.set(\"authToken\", response.data.token);",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9,hy;q=0.8,ru;q=0.7"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "_ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730723932:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730723932:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730723932:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=kvNNIxHk9OVFRrg3AEwP; FCNEC=%5B%5B%22AKsRol_s0cVap_GcpsEHZHQi6Rvht83W01kOi5uUXSgMs7z3P3skeAVYlRp1XO1r4p5Sc-9DjhRFwC9jAGEHV8kD5mghQ5-W884SMnnuu_RVAq6rsvpJ6BzECGrg77lOLPxPVfX3iB3YH5ZNocHh8FW3ae6FRUW_lg%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730723931.27.1.1730723997.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://practice.expandtesting.com"
+					},
+					{
+						"key": "priority",
+						"value": "u=1, i"
+					},
+					{
+						"key": "referer",
+						"value": "https://practice.expandtesting.com/notes/app/login"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"{{email}}\",\"password\":\"{{pas}}\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{dom}}/users/login",
+					"host": [
+						"{{dom}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://practice.expandtesting.com/notes/api/users/login' \\\n  -H 'accept: application/json, text/plain, */*' \\\n  -H 'accept-language: en-US,en;q=0.9,hy;q=0.8,ru;q=0.7' \\\n  -H 'content-type: application/json' \\\n  -H 'cookie: _ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730723932:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730723932:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730723932:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=kvNNIxHk9OVFRrg3AEwP; FCNEC=%5B%5B%22AKsRol_s0cVap_GcpsEHZHQi6Rvht83W01kOi5uUXSgMs7z3P3skeAVYlRp1XO1r4p5Sc-9DjhRFwC9jAGEHV8kD5mghQ5-W884SMnnuu_RVAq6rsvpJ6BzECGrg77lOLPxPVfX3iB3YH5ZNocHh8FW3ae6FRUW_lg%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730723931.27.1.1730723997.0.0.0' \\\n  -H 'origin: https://practice.expandtesting.com' \\\n  -H 'priority: u=1, i' \\\n  -H 'referer: https://practice.expandtesting.com/notes/app/login' \\\n  -H 'sec-ch-ua: \"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"' \\\n  -H 'sec-ch-ua-mobile: ?0' \\\n  -H 'sec-ch-ua-platform: \"macOS\"' \\\n  -H 'sec-fetch-dest: empty' \\\n  -H 'sec-fetch-mode: cors' \\\n  -H 'sec-fetch-site: same-origin' \\\n  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36' \\\n  --data-raw '{\"email\":\"ddd@yandex.ru\",\"password\":\"111ddd\"}'"
+			},
+			"response": []
+		},
+		{
+			"name": "Update profile test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();",
+							"",
+							"let phone = response.data.phone",
+							"pm.collectionVariables.set(\"phone\", phone);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    let name = pm.collectionVariables.replaceIn('{{$randomFirstName}}')",
+							"    ",
+							"    pm.test(\"Your test name\", function () {",
+							"        ",
+							"        pm.expect(response.data.name).to.eql(pm.collectionVariables.get(\"name\"));",
+							"    });",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"",
+							"",
+							"",
+							"",
+							"pm.request.headers.add({",
+							"  key: \"x-auth-token\",",
+							"  value: pm.environment.get(\"authToken\"),",
+							"});",
+							"let name = pm.collectionVariables.replaceIn('{{$randomFirstName}}')",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9,hy;q=0.8,ru;q=0.7"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "_ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730183591:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730183591:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730183591:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=2IGRlkSJWfGzi8NUAFXF; FCNEC=%5B%5B%22AKsRol9nYFSRP5SvsOABguXV3J2GBFmZqaQFqTFa52vDTOcVdfsZWasz3oVrFOWs9IKKDzvVLfdb2xfcG9cP39yqDxVoKb1D0cva11Ie942OvUxJGzFBWDNKNo-JBS-i9qHecHxmiNeDWA9Z6NULsArG5VWFqYL9_A%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730183590.19.1.1730183631.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://practice.expandtesting.com"
+					},
+					{
+						"key": "priority",
+						"value": "u=1, i"
+					},
+					{
+						"key": "referer",
+						"value": "https://practice.expandtesting.com/notes/app/profile"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"{{name}}\",\"phone\":\"{{phone}}\"}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{dom}}/users/profile",
+					"host": [
+						"{{dom}}"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://practice.expandtesting.com/notes/api/users/profile' \\\n  -X 'PATCH' \\\n  -H 'accept: application/json, text/plain, */*' \\\n  -H 'accept-language: en-US,en;q=0.9,hy;q=0.8,ru;q=0.7' \\\n  -H 'content-type: application/json' \\\n  -H 'cookie: _ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730183591:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730183591:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730183591:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=2IGRlkSJWfGzi8NUAFXF; FCNEC=%5B%5B%22AKsRol9nYFSRP5SvsOABguXV3J2GBFmZqaQFqTFa52vDTOcVdfsZWasz3oVrFOWs9IKKDzvVLfdb2xfcG9cP39yqDxVoKb1D0cva11Ie942OvUxJGzFBWDNKNo-JBS-i9qHecHxmiNeDWA9Z6NULsArG5VWFqYL9_A%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730183590.19.1.1730183631.0.0.0' \\\n  -H 'origin: https://practice.expandtesting.com' \\\n  -H 'priority: u=1, i' \\\n  -H 'referer: https://practice.expandtesting.com/notes/app/profile' \\\n  -H 'sec-ch-ua: \"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"' \\\n  -H 'sec-ch-ua-mobile: ?0' \\\n  -H 'sec-ch-ua-platform: \"macOS\"' \\\n  -H 'sec-fetch-dest: empty' \\\n  -H 'sec-fetch-mode: cors' \\\n  -H 'sec-fetch-site: same-origin' \\\n  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36' \\\n  -H 'x-auth-token: 9f47e0d013344f8daadeec4f823106395e6f4c772c9b4cbfaeb0d27c84d19c05' \\\n  --data-raw '{\"name\":\"Vazgen\",\"phone\":\"111888111\"}'"
+			},
+			"response": []
+		},
+		{
+			"name": "Add note test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();",
+							"",
+							"",
+							"let id = response.data.id",
+							"pm.collectionVariables.set(\"id\", id);",
+							"let request = JSON.parse(pm.request.body)",
+							"pm.collectionVariables.set (\"title\" , request.title)",
+							"pm.test(\"Test Parse\", function () {pm.expect (response.data.title).to.eql(pm.collectionVariables.get(\"title\"));",
+							"});",
+							"",
+							"",
+							"let descriptionFromResponse = response.data.description",
+							"pm.test(\"description test\", function () {",
+							"    ",
+							"    pm.expect(response.data.description).to.eql(pm.collectionVariables.get(\"description\"));",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let title = \"My note\"",
+							"pm.collectionVariables.set(\"title\", title);",
+							"let description = \"Hello\"",
+							"pm.collectionVariables.set(\"description\", description);",
+							"pm.request.headers.add({",
+							"  key: \"x-auth-token\",",
+							"  value: pm.environment.get(\"authToken\"),",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9,hy;q=0.8,ru;q=0.7"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "_ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730199989:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730199989:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730199989:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=rKWkAUrd3YEtqdTwAGLD; FCNEC=%5B%5B%22AKsRol-RFvDs6bCnhjvEIl5A_D-febStlP5LtpKokU-_TngYu91eAX3ML-pf9-hEEX-2KgDkXujw3miOrKlbhmL1XwhdqB3H2ODq88NOnsBdjKl_rZtWeCTzYH-dRe9ZQ7UZIZ6Ja3SpVqEGC8x2G1vzfzxsfKVFwQ%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730199988.20.1.1730200018.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://practice.expandtesting.com"
+					},
+					{
+						"key": "priority",
+						"value": "u=1, i"
+					},
+					{
+						"key": "referer",
+						"value": "https://practice.expandtesting.com/notes/app/"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "{{token}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\":\"My note\",\"description\":\"Hello\",\"category\":\"Personal\",\"completed\":{{$randomBoolean}}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{dom}}/notes/",
+					"host": [
+						"{{dom}}"
+					],
+					"path": [
+						"notes",
+						""
+					]
+				},
+				"description": "Generated from cURL: curl 'https://practice.expandtesting.com/notes/api/notes/' \\\n  -H 'accept: application/json, text/plain, */*' \\\n  -H 'accept-language: en-US,en;q=0.9,hy;q=0.8,ru;q=0.7' \\\n  -H 'content-type: application/json' \\\n  -H 'cookie: _ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730199989:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730199989:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730199989:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=rKWkAUrd3YEtqdTwAGLD; FCNEC=%5B%5B%22AKsRol-RFvDs6bCnhjvEIl5A_D-febStlP5LtpKokU-_TngYu91eAX3ML-pf9-hEEX-2KgDkXujw3miOrKlbhmL1XwhdqB3H2ODq88NOnsBdjKl_rZtWeCTzYH-dRe9ZQ7UZIZ6Ja3SpVqEGC8x2G1vzfzxsfKVFwQ%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730199988.20.1.1730200018.0.0.0' \\\n  -H 'origin: https://practice.expandtesting.com' \\\n  -H 'priority: u=1, i' \\\n  -H 'referer: https://practice.expandtesting.com/notes/app/' \\\n  -H 'sec-ch-ua: \"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"' \\\n  -H 'sec-ch-ua-mobile: ?0' \\\n  -H 'sec-ch-ua-platform: \"macOS\"' \\\n  -H 'sec-fetch-dest: empty' \\\n  -H 'sec-fetch-mode: cors' \\\n  -H 'sec-fetch-site: same-origin' \\\n  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36' \\\n  -H 'x-auth-token: 9f47e0d013344f8daadeec4f823106395e6f4c772c9b4cbfaeb0d27c84d19c05' \\\n  --data-raw '{\"title\":\"My note\",\"description\":\"Hello\",\"category\":\"Personal\",\"completed\":false}'"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit note",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();",
+							"",
+							"",
+							"pm.collectionVariables.get(\"id\");",
+							"",
+							"let request = JSON.parse(pm.request.body)",
+							"pm.collectionVariables.set (\"title\" , request.title)",
+							"pm.test(\"Test Parse\", function () {pm.expect (response.data.title).to.eql(pm.collectionVariables.get(\"title\"));",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.request.headers.add({",
+							"  key: \"x-auth-token\",",
+							"  value: pm.environment.get(\"authToken\"),",
+							"});",
+							"let completed = pm.collectionVariables.replaceIn('{{$randomBoolean}}')",
+							"pm.collectionVariables.set(\"completed\", completed);",
+							"",
+							"let title = pm.collectionVariables.replaceIn('{{$randomJobTitle}}')",
+							"pm.collectionVariables.set(\"title\", title);",
+							"",
+							"let description = pm.collectionVariables.replaceIn('{{$randomCatchPhrase}}')",
+							"pm.collectionVariables.set(\"description\", description);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9,hy;q=0.8,ru;q=0.7"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "_ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730199989:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730199989:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730199989:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=rKWkAUrd3YEtqdTwAGLD; FCNEC=%5B%5B%22AKsRol-RFvDs6bCnhjvEIl5A_D-febStlP5LtpKokU-_TngYu91eAX3ML-pf9-hEEX-2KgDkXujw3miOrKlbhmL1XwhdqB3H2ODq88NOnsBdjKl_rZtWeCTzYH-dRe9ZQ7UZIZ6Ja3SpVqEGC8x2G1vzfzxsfKVFwQ%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730199988.20.1.1730200018.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://practice.expandtesting.com"
+					},
+					{
+						"key": "priority",
+						"value": "u=1, i"
+					},
+					{
+						"key": "referer",
+						"value": "https://practice.expandtesting.com/notes/app/"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "{{token}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\":\"{{title}}\",\"description\":\"{{description}}\",\"category\":\"Work\",\"completed\":\"{{completed}}\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{dom}}/notes/{{id}}",
+					"host": [
+						"{{dom}}"
+					],
+					"path": [
+						"notes",
+						"{{id}}"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://practice.expandtesting.com/notes/api/notes/6720c21da3fed20153f91d75' \\\n  -X 'PUT' \\\n  -H 'accept: application/json, text/plain, */*' \\\n  -H 'accept-language: en-US,en;q=0.9,hy;q=0.8,ru;q=0.7' \\\n  -H 'content-type: application/json' \\\n  -H 'cookie: _ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730199989:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730199989:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730199989:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=rKWkAUrd3YEtqdTwAGLD; FCNEC=%5B%5B%22AKsRol-RFvDs6bCnhjvEIl5A_D-febStlP5LtpKokU-_TngYu91eAX3ML-pf9-hEEX-2KgDkXujw3miOrKlbhmL1XwhdqB3H2ODq88NOnsBdjKl_rZtWeCTzYH-dRe9ZQ7UZIZ6Ja3SpVqEGC8x2G1vzfzxsfKVFwQ%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730199988.20.1.1730200018.0.0.0' \\\n  -H 'origin: https://practice.expandtesting.com' \\\n  -H 'priority: u=1, i' \\\n  -H 'referer: https://practice.expandtesting.com/notes/app/' \\\n  -H 'sec-ch-ua: \"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"' \\\n  -H 'sec-ch-ua-mobile: ?0' \\\n  -H 'sec-ch-ua-platform: \"macOS\"' \\\n  -H 'sec-fetch-dest: empty' \\\n  -H 'sec-fetch-mode: cors' \\\n  -H 'sec-fetch-site: same-origin' \\\n  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36' \\\n  -H 'x-auth-token: 9f47e0d013344f8daadeec4f823106395e6f4c772c9b4cbfaeb0d27c84d19c05' \\\n  --data-raw '{\"title\":\"My second note\",\"description\":\"byebye\",\"category\":\"Work\",\"completed\":false}'"
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();",
+							"",
+							"pm.collectionVariables.get(\"id\");",
+							"pm.test(\"Your test name\", function () {",
+							"    var response = pm.response.json();",
+							"    pm.expect(response.status).to.eql(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.request.headers.add({",
+							"  key: \"x-auth-token\",",
+							"  value: pm.environment.get(\"authToken\"),",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9,hy;q=0.8,ru;q=0.7"
+					},
+					{
+						"key": "cookie",
+						"value": "_ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730199989:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730199989:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730199989:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=rKWkAUrd3YEtqdTwAGLD; FCNEC=%5B%5B%22AKsRol-RFvDs6bCnhjvEIl5A_D-febStlP5LtpKokU-_TngYu91eAX3ML-pf9-hEEX-2KgDkXujw3miOrKlbhmL1XwhdqB3H2ODq88NOnsBdjKl_rZtWeCTzYH-dRe9ZQ7UZIZ6Ja3SpVqEGC8x2G1vzfzxsfKVFwQ%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730199988.20.1.1730200018.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://practice.expandtesting.com"
+					},
+					{
+						"key": "priority",
+						"value": "u=1, i"
+					},
+					{
+						"key": "referer",
+						"value": "https://practice.expandtesting.com/notes/app/"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "a401c629b1c74551865da7d17c0dae6a3a11e001b7e04e87a9028432055c30f2",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{dom}}/notes/{{id}}",
+					"host": [
+						"{{dom}}"
+					],
+					"path": [
+						"notes",
+						"{{id}}"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://practice.expandtesting.com/notes/api/notes/6720cd42a3fed20153f91e31' \\\n  -X 'DELETE' \\\n  -H 'accept: application/json, text/plain, */*' \\\n  -H 'accept-language: en-US,en;q=0.9,hy;q=0.8,ru;q=0.7' \\\n  -H 'cookie: _ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730199989:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730199989:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730199989:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=rKWkAUrd3YEtqdTwAGLD; FCNEC=%5B%5B%22AKsRol-RFvDs6bCnhjvEIl5A_D-febStlP5LtpKokU-_TngYu91eAX3ML-pf9-hEEX-2KgDkXujw3miOrKlbhmL1XwhdqB3H2ODq88NOnsBdjKl_rZtWeCTzYH-dRe9ZQ7UZIZ6Ja3SpVqEGC8x2G1vzfzxsfKVFwQ%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730199988.20.1.1730200018.0.0.0' \\\n  -H 'origin: https://practice.expandtesting.com' \\\n  -H 'priority: u=1, i' \\\n  -H 'referer: https://practice.expandtesting.com/notes/app/' \\\n  -H 'sec-ch-ua: \"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"' \\\n  -H 'sec-ch-ua-mobile: ?0' \\\n  -H 'sec-ch-ua-platform: \"macOS\"' \\\n  -H 'sec-fetch-dest: empty' \\\n  -H 'sec-fetch-mode: cors' \\\n  -H 'sec-fetch-site: same-origin' \\\n  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36' \\\n  -H 'x-auth-token: 9f47e0d013344f8daadeec4f823106395e6f4c772c9b4cbfaeb0d27c84d19c05'"
+			},
+			"response": []
+		},
+		{
+			"name": "Search id test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();",
+							"let messageFromResponse = response.message",
+							"pm.test(\"Your test name\", function () {",
+							"",
+							"    ",
+							"    pm.expect(response.message).to.eql(\"No notes found\",);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let message = \"No notes found\"",
+							"pm.collectionVariables.set(\"message\", message);",
+							"pm.request.headers.add({",
+							"  key: \"x-auth-token\",",
+							"  value: pm.environment.get(\"authToken\"),",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9,hy;q=0.8,ru;q=0.7"
+					},
+					{
+						"key": "cookie",
+						"value": "_ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730199989:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730199989:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730199989:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=rKWkAUrd3YEtqdTwAGLD; FCNEC=%5B%5B%22AKsRol-RFvDs6bCnhjvEIl5A_D-febStlP5LtpKokU-_TngYu91eAX3ML-pf9-hEEX-2KgDkXujw3miOrKlbhmL1XwhdqB3H2ODq88NOnsBdjKl_rZtWeCTzYH-dRe9ZQ7UZIZ6Ja3SpVqEGC8x2G1vzfzxsfKVFwQ%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730203154.21.0.1730203154.0.0.0"
+					},
+					{
+						"key": "priority",
+						"value": "u=1, i"
+					},
+					{
+						"key": "referer",
+						"value": "https://practice.expandtesting.com/notes/app/search?keyword=6720cd42a3fed20153f91e31"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "a401c629b1c74551865da7d17c0dae6a3a11e001b7e04e87a9028432055c30f2",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{dom}}/notes/?search={{id}}",
+					"host": [
+						"{{dom}}"
+					],
+					"path": [
+						"notes",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "{{id}}"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl 'https://practice.expandtesting.com/notes/api/notes/?search=6720cd42a3fed20153f91e31' \\\n  -H 'accept: application/json, text/plain, */*' \\\n  -H 'accept-language: en-US,en;q=0.9,hy;q=0.8,ru;q=0.7' \\\n  -H 'cookie: _ga=GA1.1.631910500.1729234973; express:sess=eyJmbGFzaCI6e319; express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; __gads=ID=41741c600d75c8b7:T=1729234974:RT=1730199989:S=ALNI_MbT1w3sOlZ_q-5Dcb_md-H2P-OsKA; __gpi=UID=00000f0cc9b509ae:T=1729234974:RT=1730199989:S=ALNI_Masdix5yGNcZegt2QjIkwmQugat9w; __eoi=ID=dfae05c00300fa69:T=1729234974:RT=1730199989:S=AA-Afjaqhp5Q5dD6g33tB1_1VUMv; io=rKWkAUrd3YEtqdTwAGLD; FCNEC=%5B%5B%22AKsRol-RFvDs6bCnhjvEIl5A_D-febStlP5LtpKokU-_TngYu91eAX3ML-pf9-hEEX-2KgDkXujw3miOrKlbhmL1XwhdqB3H2ODq88NOnsBdjKl_rZtWeCTzYH-dRe9ZQ7UZIZ6Ja3SpVqEGC8x2G1vzfzxsfKVFwQ%3D%3D%22%5D%5D; _ga_90GRT6N40B=GS1.1.1730203154.21.0.1730203154.0.0.0' \\\n  -H 'priority: u=1, i' \\\n  -H 'referer: https://practice.expandtesting.com/notes/app/search?keyword=6720cd42a3fed20153f91e31' \\\n  -H 'sec-ch-ua: \"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"' \\\n  -H 'sec-ch-ua-mobile: ?0' \\\n  -H 'sec-ch-ua-platform: \"macOS\"' \\\n  -H 'sec-fetch-dest: empty' \\\n  -H 'sec-fetch-mode: cors' \\\n  -H 'sec-fetch-site: same-origin' \\\n  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36' \\\n  -H 'x-auth-token: 9f47e0d013344f8daadeec4f823106395e6f4c772c9b4cbfaeb0d27c84d19c05'"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "email",
+			"value": ""
+		},
+		{
+			"key": "name",
+			"value": "Gurgen",
+			"type": "string"
+		},
+		{
+			"key": "phone",
+			"value": "111888111"
+		},
+		{
+			"key": "title",
+			"value": "My note"
+		},
+		{
+			"key": "description",
+			"value": ""
+		},
+		{
+			"key": "note id",
+			"value": "67210948a3fed20153f92467"
+		},
+		{
+			"key": "title1",
+			"value": "My second note",
+			"type": "string"
+		},
+		{
+			"key": "message",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": "token = 911c825deb4a476d9b8dee82167d58d0c82950cfc46043d8b3417f4088834081",
+			"type": "string"
+		},
+		{
+			"key": "variable_key",
+			"value": ""
+		},
+		{
+			"key": "password",
+			"value": ""
+		},
+		{
+			"key": "id",
+			"value": ""
+		},
+		{
+			"key": "completed",
+			"value": ""
+		},
+		{
+			"key": "pas",
+			"value": "111888111"
+		}
+	]
+}
